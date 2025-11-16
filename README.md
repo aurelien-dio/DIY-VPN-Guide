@@ -171,7 +171,7 @@ ssh root@51.158.110.106
 **2. Handle host authenticity warning:**
 On the very first connection, you will see a message like: `The authenticity of host '...' can't be established.` This is normal. Type `yes` and press `Enter` to continue.
 
-> **Troubleshooting:** If you delete and recreate an instance in secondes or minutes, you might get a `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!` error. This is a security measure because the same IP now belongs to a new server. To fix this, run the following command on your local machine to remove the old key fingerprint, then try connecting again:
+> **Troubleshooting:** If you delete and recreate an instance immediately, you might get a `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!` error. This is a security measure because the same IP now belongs to a new server. To fix this, run the following command on your local machine to remove the old key fingerprint, then try connecting again:
 > ```bash
 > ssh-keygen -R YOUR_SERVER_IP
 > ```
@@ -479,7 +479,7 @@ This is the ultimate cost-saving strategy. You completely destroy the instance, 
 
 *   **When to use it:** If you only need the VPN very occasionally (e.g. once a month or less).
 *   **Pros:** The cost drops to **€0.00**. You pay absolutely nothing when you are not using it.
-*   **Cons:** You must re-run the server-side configuration (Step 3) every time you create a new instance. This takes about 10-15 minutes.
+*   **Cons:** You must re-run the server-side configuration (Step 3) every time you create a new instance. This takes about 5-10 minutes.
 
 **Procedure to delete:**
 
