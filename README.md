@@ -111,7 +111,7 @@ This section covers the creation of the virtual server and the essential steps t
 
 ### Instance creation process
 
-In your cloud provider's dashboard (e.g., Scaleway), begin the process of creating a new instance with the following parameters:
+In your cloud provider's dashboard (e.g. Scaleway), begin the process of creating a new instance with the following parameters:
 
 *   **Instance type:** Select the most economical option, such as `DEV1-S`.
 *   **Region/Zone:** Choose the geographical location you need. For our example, this would be `Paris (PAR1)`.
@@ -148,7 +148,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBv7fR8j4e2L/iB... scaleway_vps_key
 Copy this entire line of text.
 
 **3. Add the public key to your provider's dashboard:**
-In the Scaleway interface, navigate to the "Credentials" or "SSH Keys" section. Add a new key, give it a memorable name (e.g., "MyMacBook"), and paste the public key you just copied.
+In the Scaleway interface, navigate to the "Credentials" or "SSH Keys" section. Add a new key, give it a memorable name (e.g. "MyMacBook"), and paste the public key you just copied.
 
 **4. Finalize instance creation:**
 Return to the instance creation screen and select the SSH key you just added. Now you can safely create the server.
@@ -458,7 +458,7 @@ There are two main strategies, depending on your frequency of use.
 
 This method is like putting your server to sleep. The configuration and IP address are preserved, allowing for a quick restart.
 
-*   **When to use it:** If you plan to use your VPN regularly (e.g., several times a week or month).
+*   **When to use it:** If you plan to use your VPN regularly (e.g. several times a week or month).
 *   **Pros:** Very fast to restart (usually under a minute), keeps the same IP and configuration.
 *   **Cons / ⚠️ Important Cost Warning:** Powering off the instance **does not stop all billing**. You will still be charged for reserved resources, primarily the **IPv4 address** and the **disk storage**. This can result in a fixed cost of approximately €1.50 per month, even if the server is off.
 
@@ -476,7 +476,7 @@ This method is like putting your server to sleep. The configuration and IP addre
 
 This is the ultimate cost-saving strategy. You completely destroy the instance, and all billing stops immediately.
 
-*   **When to use it:** If you only need the VPN very occasionally (e.g., once a month or less).
+*   **When to use it:** If you only need the VPN very occasionally (e.g. once a month or less).
 *   **Pros:** The cost drops to **€0.00**. You pay absolutely nothing when you are not using it.
 *   **Cons:** You must re-run the server-side configuration (Step 3) every time you create a new instance. This takes about 10-15 minutes.
 
