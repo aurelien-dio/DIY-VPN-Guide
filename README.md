@@ -94,7 +94,7 @@ This guide uses **Scaleway**, a French provider, which is ideal for accessing Fr
 The physical location of the server's datacenter is critical. When you connect to your VPN, your internet traffic will exit from this location.
 
 *   **Rule:** To access content restricted to a specific country, you **must** choose a server located in that country.
-*   **Example:** To watch TF1 (a French channel), you must create a server in a datacenter located in France (e.g. Paris). A server in Germany or the USA will not work for this purpose.
+*   **Example:** To watch TF1 (a French TV channel), you must create a server in a datacenter located in France (e.g. Paris). A server in Germany or the USA will not work for this purpose.
 
 ### Choosing the most cost-effective instance
 
