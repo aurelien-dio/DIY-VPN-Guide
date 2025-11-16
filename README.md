@@ -18,39 +18,41 @@ The initial setup takes **approximately 10-15 minutes** to complete, after which
 
 ## Table of contents
 
-1.  [**Prerequisites**](#prerequisites)
+## Table of Contents
+
+1.  [**Prerequisites**](#1-prerequisites)
     *   List of required tools and accounts before starting the procedure.
 
-2.  [**Step 1: Choosing your cloud provider & server**](#step-1-choosing-your-cloud-provider--server)
+2.  [**Step 1: Choosing Your Cloud Provider & Server**](#2-step-1-choosing-your-cloud-provider--server)
     *   Why hourly billing is the key to an ultra-economical solution.
     *   Selecting the right server location based on your needs.
     *   Choosing the most cost-effective instance for a VPN service.
 
-3.  [**Step 2: Creating and accessing your server**](#step-2-creating-and-accessing-your-server)
+3.  [**Step 2: Creating and Accessing Your Server**](#3-step-2-creating-and-accessing-your-server)
     *   The instance creation process.
     *   **Crucial:** Generating and adding an SSH Key to guarantee secure access.
     *   First connection to the server via the SSH protocol.
 
-4.  [**Step 3: server-side VPN configuration (WireGuard)**](#step-3-server-side-vpn-configuration-wireguard)
+4.  [**Step 3: Server-Side VPN Configuration (WireGuard)**](#4-step-3-server-side-vpn-configuration-wireguard)
     *   System update and `WireGuard` installation.
     *   Generation of server and client cryptographic keys.
     *   Creation of the `wg0.conf` configuration file.
     *   Enabling kernel IP forwarding.
     *   Starting and enabling the WireGuard service.
 
-5.  [**Step 4: client-side configuration**](#step-4-client-side-configuration)
+5.  [**Step 4: Client-Side Configuration**](#5-step-4-client-side-configuration)
     *   Installation of the WireGuard application on your local machine or device.
     *   Creation of the client configuration file.
     *   Importing the configuration and activating the VPN tunnel.
 
-6.  [**Step 5: verification**](#step-5-verification)
+6.  [**Step 5: Verification**](#6-step-5-verification)
     *   Procedure to confirm that your IP address is correctly masked and your traffic is routed through the server.
 
-7.  [**Step 6: managing your instance & costs**](#step-6-managing-your-instance--costs)
-    *   **The "power off" method:** Suspending the instance to reduce costs.
-    *   **The "delete" method:** The ultimate cost-saving strategy for sporadic use.
+7.  [**Step 6: Managing Your Instance & Costs**](#7-step-6-managing-your-instance--costs)
+    *   **The "Power Off" Method:** Suspending the instance to reduce costs.
+    *   **The "Delete" Method:** The ultimate cost-saving strategy for sporadic use.
     *   The correct procedure for shutting down and restarting the VPN service.
-
+  
 ## 1. Prerequisites
 
 Before starting, ensure you have the following elements. This guide assumes a basic familiarity with the command line interface.
