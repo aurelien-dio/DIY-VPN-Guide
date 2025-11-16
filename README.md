@@ -171,7 +171,7 @@ ssh root@51.158.110.106
 **2. Handle host authenticity warning:**
 On the very first connection, you will see a message like: `The authenticity of host '...' can't be established.` This is normal. Type `yes` and press `Enter` to continue.
 
-> **Troubleshooting:** If you delete and recreate an instance, you might get a `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!` error. This is a security measure because the same IP now belongs to a new server. To fix this, run the following command on your local machine to remove the old key fingerprint, then try connecting again:
+> **Troubleshooting:** If you delete and recreate an instance in secondes or minutes, you might get a `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!` error. This is a security measure because the same IP now belongs to a new server. To fix this, run the following command on your local machine to remove the old key fingerprint, then try connecting again:
 > ```bash
 > ssh-keygen -R YOUR_SERVER_IP
 > ```
