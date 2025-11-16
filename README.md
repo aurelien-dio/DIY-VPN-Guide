@@ -253,9 +253,10 @@ This file contains all the rules for your VPN server.
     # client_public.key
     cl13nt_publ1c_k3y_3x4mpl3_fGgHhJjKkLlMmNnOoPpQqRrSsTtUuVv=
     ```
+    Copy them into an empty text file apart from your terminal.
 
 3.  **Create and edit the configuration file:**
-    Open the file `wg0.conf` using the `nano` text editor.
+    Return in your terminal to open the file `wg0.conf` using the `nano` text editor.
 
     ```bash
     nano /etc/wireguard/wg0.conf
