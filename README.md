@@ -328,7 +328,7 @@ The server is now waiting for a connection. The final step is to configure your 
 
 If you haven't already, install the official WireGuard client on the device you want to connect from.
 
-*   **Download:** Go to the official website <a href="https://www.wireguard.com/install/" target="_blank" rel="noopener noreferrer">https://www.wireguard.com/install/</a> and choose the version for your operating system (Windows, macOS, Linux, Android, iOS).
+*   **Download:** Go to the <a href="https://www.wireguard.com/install/" target="_blank" rel="noopener noreferrer">Wireguard official website</a> and choose the version for your operating system (Windows, macOS, Linux, Android, iOS).
 
 ### Creating the client configuration file
 
