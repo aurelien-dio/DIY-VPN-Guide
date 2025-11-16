@@ -501,3 +501,8 @@ Always follow this order to avoid connection issues.
 
 1.  **First:** Power on (or recreate) the instance in your cloud provider's dashboard. Wait 1-2 minutes for it to boot up completely.
 2.  **Then:** Activate the connection in your WireGuard client.
+
+- - -
+
+Mission accomplished. Your VPN is *up*, the geo-blocks are *down*. You've just saved €10 on a VPN... that's plenty for pizzas and beers! 
+Enjoy the match!
