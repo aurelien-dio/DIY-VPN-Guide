@@ -16,8 +16,6 @@ By using a cloud provider with hourly billing, you'll build a solution that addr
 
 The initial setup takes **approximately 10-15 minutes** to complete, after which you will have a reusable solution that can be activated **in seconds**.
 
-## Table of contents
-
 ## Table of Contents
 
 1.  [**Prerequisites**](#1-prerequisites)
