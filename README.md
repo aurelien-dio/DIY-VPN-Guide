@@ -46,7 +46,12 @@ The initial setup takes **approximately 10-15 minutes** to complete, after which
 6.  [**Step 5: Verification**](#6-step-5-verification)
     *   Procedure to confirm that your IP address is correctly masked and your traffic is routed through the server.
 
-7.  [**Step 6: Managing Your Instance & Costs**](#7-step-6-managing-your-instance--costs)
+7.  [**Troubleshooting: Slow Internet When Deactivating the VPN**](#7-troubleshooting-slow-internet-when-deactivating-the-vpn)
+    *   Why simply deactivating the tunnel causes slowness.
+    *   How to properly disable the VPN temporarily.
+    *   Alternative configurations for flexible switching.
+
+8.  [**Step 6: Managing Your Instance & Costs**](#8-step-6-managing-your-instance--costs)
     *   **The "Power Off" Method:** Suspending the instance to reduce costs.
     *   **The "Delete" Method:** The ultimate cost-saving strategy for sporadic use.
     *   The correct procedure for shutting down and restarting the VPN service.
@@ -447,7 +452,106 @@ If the video plays without any error message, your VPN is a complete success.
 
 > **Pro Tip:** To be absolutely certain, you can deactivate your VPN in the WireGuard client and refresh the page. The geo-restriction error should reappear. This confirms that your DIY VPN is the component making the difference.
 
-## 7. Step 6: managing your instance & costs
+## 7. Troubleshooting: slow internet when deactivating the VPN
+
+### The problem: why internet becomes slow after disabling WireGuard
+
+If you simply deactivate the VPN tunnel in the WireGuard application without properly shutting down, you may experience very slow or broken internet connectivity. This happens because:
+
+1. **DNS configuration persists:** When WireGuard is active, your system uses the DNS server specified in the configuration file (`DNS = 1.1.1.1` on line 369). On some operating systems (particularly Windows and macOS), simply deactivating the tunnel doesn't always restore your original DNS settings automatically.
+
+2. **Network routes may linger:** Depending on your OS, some routing table entries may not be cleaned up properly, causing traffic to attempt routing through a now-inactive interface.
+
+3. **System DNS cache:** Your system may continue trying to use cached DNS settings from when the VPN was active.
+
+### Solution 1: restart your network connection (quick fix)
+
+The fastest way to restore normal internet speed is to reset your network:
+
+**On Windows:**
+1. Deactivate the WireGuard tunnel
+2. Open Settings → Network & Internet → Status
+3. Click "Network reset" or simply disable/re-enable your Wi-Fi or Ethernet connection
+
+**On macOS:**
+1. Deactivate the WireGuard tunnel
+2. Turn Wi-Fi off and back on (or disconnect/reconnect Ethernet)
+3. Alternatively, run in Terminal:
+   ```bash
+   sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+   ```
+
+**On Linux:**
+1. Deactivate the WireGuard tunnel
+2. Restart NetworkManager:
+   ```bash
+   sudo systemctl restart NetworkManager
+   ```
+   Or flush DNS cache:
+   ```bash
+   sudo systemd-resolve --flush-caches
+   ```
+
+### Solution 2: create a split-tunnel configuration (recommended for frequent switching)
+
+If you need to frequently switch between VPN and direct connection, create a second WireGuard configuration that only routes specific traffic through the VPN instead of all traffic.
+
+**Create a new configuration file** (e.g., `vpn-scaleway-split.conf`) with this modified setting:
+
+```ini
+[Interface]
+PrivateKey = [YOUR_CLIENT_PRIVATE_KEY]
+Address = 10.0.0.2/24
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = [YOUR_SERVER_PUBLIC_KEY]
+Endpoint = [YOUR_SERVER_IP]:51820
+AllowedIPs = 10.0.0.0/24
+PersistentKeepalive = 25
+```
+
+The key difference is `AllowedIPs = 10.0.0.0/24` instead of `0.0.0.0/0`. This creates a "split tunnel" that:
+- Only routes VPN-related traffic through the tunnel
+- Allows you to access your server while maintaining your normal internet connection
+- **Note:** This configuration will NOT hide your IP address or bypass geo-blocking, as most traffic still uses your normal connection
+
+### Solution 3: remove the DNS directive (for advanced users)
+
+If you manage DNS separately or want more control, you can create a configuration without the `DNS` line:
+
+```ini
+[Interface]
+PrivateKey = [YOUR_CLIENT_PRIVATE_KEY]
+Address = 10.0.0.2/24
+
+[Peer]
+PublicKey = [YOUR_SERVER_PUBLIC_KEY]
+Endpoint = [YOUR_SERVER_IP]:51820
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = 25
+```
+
+**Important:** Without a DNS directive, you must ensure your DNS queries are being routed correctly through the VPN tunnel, otherwise your ISP will still see your DNS queries (DNS leak).
+
+### The proper shutdown procedure (reminder)
+
+To avoid these issues in the first place, always follow this order:
+
+**To temporarily disable the VPN:**
+1. Deactivate the tunnel in the WireGuard application
+2. If internet is slow, restart your network connection (see Solution 1)
+3. Your real IP is now visible again
+
+**To fully stop the VPN (and stop billing):**
+1. Deactivate the tunnel in the WireGuard application
+2. Power off or delete the server instance in your cloud provider's dashboard
+
+**To reactivate the VPN:**
+1. Ensure the server instance is running in your cloud provider's dashboard
+2. Activate the tunnel in the WireGuard application
+
+## 8. Step 6: managing your instance & costs
 
 The primary advantage of this DIY solution is cost control. Unlike a fixed subscription, you only pay for what you use. Understanding how to manage your instance is key to maximizing savings.
 
