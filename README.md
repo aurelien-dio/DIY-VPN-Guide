@@ -168,7 +168,7 @@ ssh root@YOUR_SERVER_IP
 ```
 *Example:*
 ```bash
-ssh root@51.158.110.106
+ssh root@51.15.109.61
 ```
 
 **2. Handle host authenticity warning:**
@@ -180,7 +180,7 @@ On the very first connection, you will see a message like: `The authenticity of 
 > ```
 > *Example:*
 > ```bash
-> ssh-keygen -R 51.158.110.106
+> ssh-keygen -R 51.15.109.61
 > ```
 
 If the connection is successful, your terminal prompt will change to `root@your-server-name:~#`. You are now logged into your remote server and ready for the next step.
@@ -238,7 +238,7 @@ This file contains all the rules for your VPN server.
     ```
     *Example output:*
     ```
-    default via 62.210.0.1 dev ens2 proto dhcp src 51.158.110.106 metric 100
+    default via 62.210.0.1 dev ens2 proto dhcp src 51.15.109.61 metric 100
     ```
     In this example, the interface name is `ens2`. Note yours down.
 
@@ -359,7 +359,7 @@ You need three pieces of information. Two are stored on your server, and one is 
     ```
 
 *   **Note your server's public IP address:**
-    *Example:* `51.158.110.106`
+    *Example:* `51.15.109.61`
 
 **2. Create the `.conf` file on your local machine:**
 On your computer (not the server), create a new text file. Name it something descriptive, like `vpn-scaleway.conf`.
@@ -391,7 +391,7 @@ DNS = 1.1.1.1
 
 [Peer]
 PublicKey = s1rv3r_publ1c_k3y_3x4mpl3_fGgHhJjKkLlMmNnOoPpQqRrSsTtUuVv=
-Endpoint = 51.158.110.106:51820
+Endpoint = 51.15.109.61:51820
 AllowedIPs = 0.0.0.0/0
 PersistentKeepalive = 25
 ```
@@ -420,7 +420,7 @@ This is the most straightforward test. Your public IP address, as seen by the re
 The IP address displayed on the page **must** match your server's public IPv4 address.
 
 *Example:*
-If your server's IP is `51.158.110.106`, the website should display exactly `51.158.110.106`. If it still shows your home IP address, the VPN is not routing your traffic correctly.
+If your server's IP is `51.15.109.61`, the website should display exactly `51.15.109.61`. If it still shows your home IP address, the VPN is not routing your traffic correctly.
 
 ### Test 2: check your geolocation
 
